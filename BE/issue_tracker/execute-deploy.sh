@@ -1,3 +1,5 @@
 #!/bin/bash
 
-/home/ubuntu/deploy.sh > /dev/null 2> /dev/null < /dev/null &
+echo "안녕하세요 ㅠ"
+
+/home/ubuntu/deploy.sh
