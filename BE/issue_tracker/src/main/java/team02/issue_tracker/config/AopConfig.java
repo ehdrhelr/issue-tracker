@@ -20,11 +20,11 @@ import team02.issue_tracker.oauth.dto.JwtResponse;
 @Component
 public class AopConfig {
 
-    private final StopWatch stopWatch;
-
-    public AopConfig(StopWatch stopWatch) {
-        this.stopWatch = stopWatch;
-    }
+//    private final StopWatch stopWatch;
+//
+//    public AopConfig(StopWatch stopWatch) {
+//        this.stopWatch = stopWatch;
+//    }
 
     @Pointcut("execution(* team02.issue_tracker.oauth.controller.OAuthController.*login*(..))")
     private void login() {}
@@ -38,24 +38,24 @@ public class AopConfig {
         log.info("Authorization code : {}", joinPoint.getArgs());
     }
 
-    /**
-     * LogExecutionTime 어노테이션이 달린 메소드의 동작 시간을 출력한다.
-     * @param proceedingJoinPoint
-     * @return Object
-     * @throws Throwable
-     */
-    @Around("@annotation(team02.issue_tracker.annotation.LogExecutionTime)")
-    public Object jwtIssueTimeLog(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
-        stopWatch.start(proceedingJoinPoint.getSignature().getName());
-
-        Object result = proceedingJoinPoint.proceed();
-
-        stopWatch.stop();
-
-        log.info(stopWatch.prettyPrint());
-
-        return result;
-    }
+//    /**
+//     * LogExecutionTime 어노테이션이 달린 메소드의 동작 시간을 출력한다.
+//     * @param proceedingJoinPoint
+//     * @return Object
+//     * @throws Throwable
+//     */
+//    @Around("@annotation(team02.issue_tracker.annotation.LogExecutionTime)")
+//    public Object jwtIssueTimeLog(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+//        stopWatch.start(proceedingJoinPoint.getSignature().getName());
+//
+//        Object result = proceedingJoinPoint.proceed();
+//
+//        stopWatch.stop();
+//
+//        log.info(stopWatch.prettyPrint());
+//
+//        return result;
+//    }
 
     /**
      * 발행한 jwt를 출력한다.
