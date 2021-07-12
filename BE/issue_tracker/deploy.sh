@@ -1,11 +1,10 @@
-#!bin/bash
+#!/usr/bin/env bash
 
 # real deploy script
 
 # ELASTIC_IP=3.37.234.113
 
 DNS=ec2-3-37-234-113.ap-northeast-2.compute.amazonaws.com
-
 
 CURRENT_PID=$(pgrep -f issue_tracker)
 if [ -z $CURRENT_PID ]; then
