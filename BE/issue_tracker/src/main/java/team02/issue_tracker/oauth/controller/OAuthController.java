@@ -65,7 +65,6 @@ public class OAuthController {
     @GetMapping("/jwt")
     public String checkJwt(@UserId Long userId) {
         log.info("user id : {}", userId);
-
         return userId.toString();
     }
 }
