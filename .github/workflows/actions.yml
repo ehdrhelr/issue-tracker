@@ -1,7 +1,9 @@
 name: Deploy Spring boot to Amazon EC2
 
 env:
-  PROJECT_NAME: action_codedeploy
+  APPLICATION_NAME: issue-tracker-code-deploy
+  S3_BUCKET_NAME: shion-deploy
+  PROJECT_NAME: issue-tracker
 
 on:
   push:
@@ -47,3 +49,5 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp --region ap-northeast-2 ./BE/issue_tracker/build/libs/$GITHUB_SHA.zip s3://shion-deploy/$PROJECT_NAME/$GITHUB_SHA.zip
         
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name $APPLICATION_NAME --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name dev --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
