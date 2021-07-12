@@ -1,4 +1,4 @@
-#!usr/bin/bash env bash
+#!/usr/bin/env bash
 
 # real deploy script
 
